@@ -53,7 +53,7 @@ function App() {
           }
         />
         <Route
-          path="/update-password"
+          path="/apply-doctor"
           element={
             <ProtectedRoute>
               <ApplyDoctor />

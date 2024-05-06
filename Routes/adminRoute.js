@@ -6,7 +6,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 
 router.get("/get-all-doctors", authMiddleware, async (req, res) => {
   try {
-    const doctors = await User.find({});
+    const doctors = await Doctor.find({});
     res.status(200).send({
       message: "Doctors fetched successfully",
       success: true,
@@ -45,30 +45,30 @@ router.post(
   authMiddleware,
   async (req, res) => {
     try {
-      const { usersId, status } = req.body;
-      const doctor = await User.findByIdAndUpdate(usersId, {
+      const { doctorId, status } = req.body;
+      const doctor = await Doctor.findByIdAndUpdate(doctorId, {
         status,
       });
 
-      // const user = await User.findOne({ _id: doctor.userId });
-      // const unseenNotifications = user.unseenNotifications;
-      // unseenNotifications.push({
-      //   type: "new-doctor-request-changed",
-      //   message: `Your doctor account has been ${status}`,
-      //   onClickPath: "/notifications",
-      // });
-      // user.isDoctor = status === "approved" ? true : false;
-      // await user.save();
+      const user = await User.findOne({ _id: doctor.userId });
+      const unseenNotifications = user.unseenNotifications;
+      unseenNotifications.push({
+        type: "new-doctor-request-changed",
+        message: `Your doctor account has been ${status}`,
+        onClickPath: "/notifications",
+      });
+      user.isDoctor = status === "approved" ? true : false;
+      await user.save();
 
       res.status(200).send({
-        message: "User deleted successfully",
+        message: "Doctor status updated successfully",
         success: true,
         data: doctor,
       });
     } catch (error) {
       console.log(error);
       res.status(500).send({
-        message: "Error applying User account",
+        message: "Error applying doctor account",
         success: false,
         error,
       });

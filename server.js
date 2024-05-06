@@ -21,12 +21,5 @@ if (process.env.NODE_ENV === "production") {
 }
 const port = process.env.PORT || 5000;
 
-if(process.env.NODE_ENV==="production"){
-  app.use(express.static('minor1/build'));
-  app.get('*',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'minor1/build/index.html'));
-  })
-}
-
-// app.get("/", (req, res) => res.send("Hello World!"));
+app.get("/", (req, res) => res.send("Hello World!"));
 app.listen(port, () => console.log(`Node Express Server Started at ${port}!`));

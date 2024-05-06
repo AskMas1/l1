@@ -17,9 +17,9 @@ function DoctorForm({ onFinish, initivalValues }) {
         }),
       }}
     >
-      <h1 className="card-title mt-3">Update Password</h1>
+      <h1 className="card-title mt-3">Personal Information</h1>
       <Row gutter={20}>
-        {/* <Col span={8} xs={24} sm={24} lg={8}>
+        <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
             label="First Name"
@@ -48,30 +48,30 @@ function DoctorForm({ onFinish, initivalValues }) {
           >
             <Input placeholder="Phone Number" />
           </Form.Item>
-        </Col> */}
+        </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Current Password"
-            name="Current Password"
+            label="Website"
+            name="website"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Current Password" />
+            <Input placeholder="Website" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Update Password"
-            name="Update Password"
+            label="Address"
+            name="address"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Update Password" />
+            <Input placeholder="Address" />
           </Form.Item>
         </Col>
       </Row>
       <hr />
-      {/* <h1 className="card-title mt-3">Professional Information</h1>
+      <h1 className="card-title mt-3">Professional Information</h1>
       <Row gutter={20}>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
@@ -113,7 +113,7 @@ function DoctorForm({ onFinish, initivalValues }) {
             <TimePicker.RangePicker format="HH:mm" />
           </Form.Item>
         </Col>
-      </Row> */}
+      </Row>
 
       <div className="d-flex justify-content-end">
         <Button className="primary-button" htmlType="submit">
